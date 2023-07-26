@@ -3,6 +3,11 @@ export enum Status {
   finished = "finished",
 }
 
+export enum infoType {
+  designs = "designs",
+  setouts = "setouts",
+}
+
 export interface UserStructure {
   id: number;
   name: string;
