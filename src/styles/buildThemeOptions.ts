@@ -3,9 +3,9 @@ import { ThemeOptions } from "@mui/material";
 export const mainColorLight = "#2C8079";
 export const mainColorDark = "#5CD8CE";
 
-export type TTheme = "light" | "dark";
+export type Theme = "light" | "dark";
 
-export function buildThemeOptions(theme: TTheme) {
+export function buildThemeOptions(theme: Theme) {
   const themeOptions: ThemeOptions = {
     palette: {
       mode: theme,
