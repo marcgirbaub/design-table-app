@@ -1,4 +1,6 @@
-const App = (): JSX.Element => {
+import { ReactElement } from "react";
+
+const App = (): ReactElement => {
   return <></>;
 };
 
