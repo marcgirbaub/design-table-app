@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { Theme, buildThemeOptions } from "../../../styles/buildThemeOptions";
+import { Theme, buildThemeOptions } from "../../styles/buildThemeOptions";
 
 const useMaterialTheme = (theme: Theme) => {
   const themeOptions = buildThemeOptions(theme);

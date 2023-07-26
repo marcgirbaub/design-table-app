@@ -1,17 +1,17 @@
-import { ReactElement, useCallback, useMemo, useState } from "react";
+import React, { ReactNode, useCallback, useMemo, useState } from "react";
 import { ThemeProvider as MuiThemeProvider, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { Theme } from "../../styles/buildThemeOptions";
-import useMaterialTheme from "../../components/hooks/useMaterialTheme/useMaterialTheme";
+import useMaterialTheme from "../../hooks/useMaterialTheme/useMaterialTheme";
 import { ThemeContext } from "./ThemeContext";
 
 interface ThemeContextProviderProps {
-  children: ReactElement;
+  children: ReactNode;
 }
 
 const ThemeContextProvider = ({
   children,
-}: ThemeContextProviderProps): ReactElement => {
+}: ThemeContextProviderProps): React.ReactElement => {
   const [usedTheme, setUsedTheme] = useState<Theme>("light");
 
   const theme = useMaterialTheme(usedTheme);
