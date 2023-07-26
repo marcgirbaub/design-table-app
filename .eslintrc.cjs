@@ -20,5 +20,6 @@ module.exports = {
   rules: {
     "react-refresh/only-export-components": "warn",
     "no-console": "error",
+    "react-hooks/exhaustive-deps": "off",
   },
 };
