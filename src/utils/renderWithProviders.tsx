@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import ThemeContextProvider from "../store/contexts/ThemeContextProvider";
 
 const renderWithProviders = (ui: React.ReactElement) => {
-  const Wrapper = ({ children }: PropsWithChildren): JSX.Element => {
+  const Wrapper = ({ children }: PropsWithChildren): React.ReactElement => {
     return <ThemeContextProvider>{children}</ThemeContextProvider>;
   };
 
