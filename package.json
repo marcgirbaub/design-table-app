@@ -71,6 +71,9 @@
       "!src/react-app-env.d.ts",
       "!src/setupTests.ts",
       "!src/reportWebVitals.ts"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!axios)"
     ]
   }
 }

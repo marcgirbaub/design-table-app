@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { ApiResponseStructure, infoType } from "../../types/types";
 import apiClient from "../../api/apiClient";
 
-interface useApiStructure {
+interface UseApiStructure {
   getData: (infoType: infoType) => Promise<{
     isLoading: boolean;
     data: ApiResponseStructure;
@@ -11,7 +11,7 @@ interface useApiStructure {
   }>;
 }
 
-const useApi = (): useApiStructure => {
+const useApi = (): UseApiStructure => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] = useState<ApiResponseStructure>([]);
   const [isError, setIsError] = useState<boolean>(false);
