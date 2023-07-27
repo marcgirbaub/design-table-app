@@ -15,6 +15,7 @@ import {
   UsersStructure,
 } from "../../types/types";
 import getInitials from "../../utils/getInitials";
+import formatDate from "../../utils/formatDate";
 
 interface CustomTableProps {
   tableType: "designs" | "setouts";
@@ -60,13 +61,15 @@ const CustomTable = ({
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {element.courses}
+                  {element.name}
                 </TableCell>
                 <TableCell align="center">
                   {(element as DesignStructure).wales}
                 </TableCell>
                 <TableCell align="center">{element.courses}</TableCell>
-                <TableCell align="center">{element.updated}</TableCell>
+                <TableCell align="center">
+                  {formatDate(element.updated)}
+                </TableCell>
                 <TableCell align="center">
                   {getInitials(
                     users?.find(
@@ -109,7 +112,9 @@ const CustomTable = ({
                 {(element as SetoutStructure).machine_width}
               </TableCell>
               <TableCell align="center">{element.courses}</TableCell>
-              <TableCell align="center">{element.updated}</TableCell>
+              <TableCell align="center">
+                {formatDate(element.updated)}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

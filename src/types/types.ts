@@ -1,6 +1,7 @@
 export enum infoType {
   designs = "designs",
   setouts = "setouts",
+  users = "users",
 }
 
 export interface UserStructure {
