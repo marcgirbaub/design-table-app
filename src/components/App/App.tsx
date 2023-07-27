@@ -4,7 +4,9 @@ import Layout from "../Layout/Layout";
 import ThemeContextProvider from "../../store/contexts/ThemeContextProvider";
 
 const App = (): ReactElement => {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { refetchOnWindowFocus: false } },
+  });
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -16,6 +16,7 @@ import {
 } from "../../types/types";
 import getInitials from "../../utils/getInitials";
 import formatDate from "../../utils/formatDate";
+import CustomTableStyled from "./CustomTableStyled";
 
 interface CustomTableProps {
   tableType: "designs" | "setouts";
@@ -35,22 +36,80 @@ const CustomTable = ({
     };
 
     return (
+      <CustomTableStyled>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 450 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell className="table__title">Name</TableCell>
+                <TableCell align="center" className="table__title">
+                  Courses
+                </TableCell>
+                <TableCell align="center" className="table__title">
+                  Wales
+                </TableCell>
+                <TableCell align="center" className="table__title">
+                  Last Updated
+                </TableCell>
+                <TableCell align="center" className="table__title">
+                  By
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {dataToDisplay.map((element) => (
+                <TableRow
+                  key={element.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {element.name}
+                  </TableCell>
+                  <TableCell align="center">
+                    {(element as DesignStructure).wales}
+                  </TableCell>
+                  <TableCell align="center">{element.courses}</TableCell>
+                  <TableCell align="center">
+                    {formatDate(element.updated)}
+                  </TableCell>
+                  <TableCell align="center">
+                    <span className="table__data table__data--by">
+                      {getInitials(
+                        users?.find(
+                          (user) =>
+                            user.id ===
+                            (element as DesignStructure).user_id_last_update,
+                        ) ?? notFoundUser,
+                      )}
+                    </span>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </CustomTableStyled>
+    );
+  }
+
+  return (
+    <CustomTableStyled>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 450 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
-              <TableCell align="center" sx={{ fontWeight: "bold" }}>
+              <TableCell className="table__title">Name</TableCell>
+              <TableCell align="center" className="table__title">
+                Machine Name
+              </TableCell>
+              <TableCell align="center" className="table__title">
+                Machine Width
+              </TableCell>
+              <TableCell align="center" className="table__title">
                 Courses
               </TableCell>
-              <TableCell align="center" sx={{ fontWeight: "bold" }}>
-                Wales
-              </TableCell>
-              <TableCell align="center" sx={{ fontWeight: "bold" }}>
+              <TableCell align="center" className="table__title">
                 Last Updated
-              </TableCell>
-              <TableCell align="center" sx={{ fontWeight: "bold" }}>
-                By
               </TableCell>
             </TableRow>
           </TableHead>
@@ -64,73 +123,21 @@ const CustomTable = ({
                   {element.name}
                 </TableCell>
                 <TableCell align="center">
-                  {(element as DesignStructure).wales}
+                  {(element as SetoutStructure).machine_name.replace(/_/g, " ")}
+                </TableCell>
+                <TableCell align="center">
+                  {(element as SetoutStructure).machine_width}
                 </TableCell>
                 <TableCell align="center">{element.courses}</TableCell>
                 <TableCell align="center">
                   {formatDate(element.updated)}
-                </TableCell>
-                <TableCell align="center">
-                  {getInitials(
-                    users?.find(
-                      (user) =>
-                        user.id ===
-                        (element as DesignStructure).user_id_last_update,
-                    ) ?? notFoundUser,
-                  )}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-    );
-  }
-
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
-            <TableCell align="center" sx={{ fontWeight: "bold" }}>
-              Machine Name
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: "bold" }}>
-              Machine Width
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: "bold" }}>
-              Courses
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: "bold" }}>
-              Last Updated
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {dataToDisplay.map((element) => (
-            <TableRow
-              key={element.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {element.name}
-              </TableCell>
-              <TableCell align="center">
-                {(element as SetoutStructure).machine_name.replace(/_/g, " ")}
-              </TableCell>
-              <TableCell align="center">
-                {(element as SetoutStructure).machine_width}
-              </TableCell>
-              <TableCell align="center">{element.courses}</TableCell>
-              <TableCell align="center">
-                {formatDate(element.updated)}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    </CustomTableStyled>
   );
 };
 
