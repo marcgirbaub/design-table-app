@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 import endpoints from "../../router/endpoint";
 import MenuStyled from "./MenuStyled";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
@@ -11,6 +12,13 @@ const Menu = (): React.ReactElement => {
 
   return (
     <MenuStyled>
+      <div className="home-link__container">
+        {location.pathname !== "/" && (
+          <Link to={"/"} className="home-link__link">
+            <HomeIcon sx={{ alignSelf: "center" }} />
+          </Link>
+        )}
+      </div>
       <ThemeSwitch />
       <nav className="navigation">
         <Link
