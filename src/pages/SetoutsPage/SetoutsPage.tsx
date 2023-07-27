@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import CircularProgress from "@mui/material/CircularProgress";
 import useApi from "../../hooks/useApi/useApi";
-import { DesignsStructure, infoType } from "../../types/types";
+import { SetoutsStructure, infoType } from "../../types/types";
 import CustomTable from "../../components/CustomTable/CustomTable";
 import SetoutsPageStyled from "./SetoutsPageStyled";
 import { leftVariants } from "../../styles/framerMotionVariants";
@@ -33,7 +33,7 @@ const SetoutsPage = (): React.ReactElement => {
     >
       <CustomTable
         tableType="setouts"
-        dataToDisplay={data?.data as DesignsStructure}
+        dataToDisplay={data?.data as SetoutsStructure}
       />
     </SetoutsPageStyled>
   );
