@@ -1,7 +1,6 @@
 import { ThemeOptions } from "@mui/material";
 
-export const mainColorLight = "#2C8079";
-export const mainColorDark = "#5CD8CE";
+export const mainColor = "#088A80";
 
 export type Theme = "light" | "dark";
 
@@ -9,9 +8,26 @@ export function buildThemeOptions(theme: Theme) {
   const themeOptions: ThemeOptions = {
     palette: {
       mode: theme,
-      ...(theme === "light"
-        ? { primary: { main: mainColorLight } }
-        : { primary: { main: mainColorDark } }),
+    },
+    components: {
+      MuiSwitch: {
+        styleOverrides: {
+          switchBase: { color: "#000" },
+          colorPrimary: {
+            "&.Mui-checked": {
+              color: "#fff",
+            },
+          },
+          track: {
+            opacity: 0.4,
+            backgroundColor: "#000",
+            ".Mui-checked.Mui-checked + &": {
+              opacity: 0.6,
+              backgroundColor: "#fff",
+            },
+          },
+        },
+      },
     },
   };
 
