@@ -92,11 +92,19 @@ const CustomTable = ({
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="center">Machine Name</TableCell>
-            <TableCell align="center">Machine Width</TableCell>
-            <TableCell align="center">Courses</TableCell>
-            <TableCell align="center">Last Updated</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
+            <TableCell align="center" sx={{ fontWeight: "bold" }}>
+              Machine Name
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: "bold" }}>
+              Machine Width
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: "bold" }}>
+              Courses
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: "bold" }}>
+              Last Updated
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -105,8 +113,11 @@ const CustomTable = ({
               key={element.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
+              <TableCell component="th" scope="row">
+                {element.name}
+              </TableCell>
               <TableCell align="center">
-                {(element as SetoutStructure).machine_name}
+                {(element as SetoutStructure).machine_name.replace(/_/g, " ")}
               </TableCell>
               <TableCell align="center">
                 {(element as SetoutStructure).machine_width}
