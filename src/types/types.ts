@@ -1,8 +1,3 @@
-export enum Status {
-  inProgress = "in-progress",
-  finished = "finished",
-}
-
 export enum infoType {
   designs = "designs",
   setouts = "setouts",
@@ -19,7 +14,7 @@ export interface DesignStructure {
   courses: number;
   id: number;
   name: string;
-  status: Status;
+  status: string;
   updated: string;
   user_id_last_update: number;
   wales: number;

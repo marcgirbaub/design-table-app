@@ -1,6 +1,10 @@
 import { renderHook } from "@testing-library/react";
 import useApi from "./useApi";
 import { infoType } from "../../types/types";
+import { designsMock } from "../../mocks/designsMocks";
+import apiClient from "../../api/apiClient";
+
+jest.mock("../../api/apiClient");
 
 describe("Given a useApi hook", () => {
   describe("When the getData function is called with the designs", () => {
@@ -11,9 +15,11 @@ describe("Given a useApi hook", () => {
         },
       } = renderHook(() => useApi());
 
-      const { isLoading } = await getData(infoType.designs);
+      apiClient.get = jest.fn().mockResolvedValue({ data: designsMock });
 
-      expect(isLoading).toBe(false);
+      const { data } = await getData(infoType.designs);
+
+      expect(data).toEqual(designsMock);
     });
   });
 });

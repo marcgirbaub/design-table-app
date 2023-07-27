@@ -1,7 +1,10 @@
 import { ReactElement } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const App = (): ReactElement => {
-  return <></>;
+  const queryClient = new QueryClient();
+
+  return <QueryClientProvider client={queryClient}></QueryClientProvider>;
 };
 
 export default App;
