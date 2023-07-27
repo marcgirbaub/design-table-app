@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { mainColor } from "../../styles/buildThemeOptions";
 
-const LeftSideMenuStyled = styled.div`
+const MenuStyled = styled.div`
   padding: 160px 0px;
   display: flex;
   flex-direction: column;
@@ -10,16 +10,30 @@ const LeftSideMenuStyled = styled.div`
   min-height: 100vh;
 
   @media (max-width: 1000px) {
-    display: none;
+    min-height: 20px;
+    padding: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
   .navigation {
     display: flex;
     flex-direction: column;
 
+    @media (max-width: 1000px) {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
     &__link {
       font-weight: bold;
       padding: 10px 60px;
+
+      @media (max-width: 1000px) {
+        padding: 10px 20px;
+      }
 
       &--active {
         background-color: #000;
@@ -29,4 +43,4 @@ const LeftSideMenuStyled = styled.div`
   }
 `;
 
-export default LeftSideMenuStyled;
+export default MenuStyled;

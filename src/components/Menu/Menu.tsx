@@ -1,19 +1,16 @@
-/* eslint-disable no-console */
 import { Link, useLocation } from "react-router-dom";
 import endpoints from "../../router/endpoint";
-import LeftSideMenuStyled from "./LeftSideMenuStyled";
+import MenuStyled from "./MenuStyled";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 
-const LeftSideMenu = (): React.ReactElement => {
+const Menu = (): React.ReactElement => {
   const location = useLocation();
-
-  console.log(location.pathname);
 
   const getActiveClass = (path: string) =>
     location.pathname === `/${path}` ? "navigation__link--active" : "";
 
   return (
-    <LeftSideMenuStyled>
+    <MenuStyled>
       <ThemeSwitch />
       <nav className="navigation">
         <Link
@@ -29,8 +26,8 @@ const LeftSideMenu = (): React.ReactElement => {
           Setouts
         </Link>
       </nav>
-    </LeftSideMenuStyled>
+    </MenuStyled>
   );
 };
 
-export default LeftSideMenu;
+export default Menu;

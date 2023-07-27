@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import LayoutStyled from "./LayoutStyled";
-import LeftSideMenu from "../LeftSideMenu/LeftSideMenu";
+import Menu from "../Menu/Menu";
 
 const Layout = (): React.ReactElement => {
   return (
     <LayoutStyled>
-      <LeftSideMenu />
+      <Menu />
       <main className="main-content">
         <Outlet />
       </main>
