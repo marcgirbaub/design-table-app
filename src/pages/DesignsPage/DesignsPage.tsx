@@ -4,6 +4,7 @@ import useApi from "../../hooks/useApi/useApi";
 import { DesignsStructure, infoType } from "../../types/types";
 import CustomTable from "../../components/CustomTable/CustomTable";
 import DesignsPageStyled from "./DesignsPageStyled";
+import { leftVariants } from "../../styles/framerMotionVariants";
 
 const DesignsPage = (): React.ReactElement => {
   const { getData } = useApi();
@@ -19,14 +20,22 @@ const DesignsPage = (): React.ReactElement => {
 
   if (isLoading || usersIsLoading) {
     return (
-      <DesignsPageStyled>
+      <DesignsPageStyled
+        initial="initial"
+        animate="animate"
+        variants={leftVariants}
+      >
         <CircularProgress />
       </DesignsPageStyled>
     );
   }
 
   return (
-    <DesignsPageStyled>
+    <DesignsPageStyled
+      initial="initial"
+      animate="animate"
+      variants={leftVariants}
+    >
       <CustomTable
         tableType="designs"
         dataToDisplay={data?.data as DesignsStructure}
