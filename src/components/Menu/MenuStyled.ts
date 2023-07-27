@@ -35,9 +35,17 @@ const MenuStyled = styled.div`
         padding: 10px 20px;
       }
 
+      &:hover {
+        opacity: 0.4;
+      }
+
       &--active {
         background-color: #000;
         color: #fff;
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
