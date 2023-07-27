@@ -3,12 +3,14 @@ import App from "../components/App/App";
 import endpoints from "./endpoint";
 import DesignsPage from "../pages/DesignsPage/DesignsPage";
 import SetoutsPage from "../pages/SetoutsPage/SetoutsPage";
+import HomePage from "../pages/HomePage/HomePage";
 
 const routes: RouteObject[] = [
   {
     element: <App />,
     path: "/",
     children: [
+      { path: "/", element: <HomePage /> },
       { path: endpoints.designs, element: <DesignsPage /> },
       { path: endpoints.setouts, element: <SetoutsPage /> },
     ],
