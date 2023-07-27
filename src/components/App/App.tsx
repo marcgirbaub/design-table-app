@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
-import { Outlet } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Layout from "../Layout/Layout";
 
 const App = (): ReactElement => {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <Layout />
     </QueryClientProvider>
   );
 };
