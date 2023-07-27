@@ -1,6 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import useApi from "./useApi";
 import { infoType } from "../../types/types";
+import { designsMock } from "../../mocks/designsMocks";
 
 describe("Given a useApi hook", () => {
   describe("When the getData function is called with the designs", () => {
@@ -11,9 +12,9 @@ describe("Given a useApi hook", () => {
         },
       } = renderHook(() => useApi());
 
-      const { isLoading } = await getData(infoType.designs);
+      const { data } = await getData(infoType.designs);
 
-      expect(isLoading).toBe(false);
+      expect(data).toEqual(designsMock);
     });
   });
 });
