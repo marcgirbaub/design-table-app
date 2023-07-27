@@ -1,13 +1,13 @@
 import { ApiResponseStructure, infoType } from "../../types/types";
 import apiClient from "../../api/apiClient";
 
-interface useApiStructure {
+interface UseApiStructure {
   getData: (infoType: infoType) => Promise<{
     data: ApiResponseStructure;
   }>;
 }
 
-const useApi = (): useApiStructure => {
+const useApi = (): UseApiStructure => {
   const getData = async (infoType: infoType) => {
     const { data } = await apiClient.get<ApiResponseStructure>(infoType);
 
