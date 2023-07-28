@@ -1,3 +1,4 @@
+import ErrorIcon from "@mui/icons-material/Error";
 import { useQuery } from "react-query";
 import CircularProgress from "@mui/material/CircularProgress";
 import useApi from "../../hooks/useApi/useApi";
@@ -9,9 +10,22 @@ import { leftVariants } from "../../styles/framerMotionVariants";
 const SetoutsPage = (): React.ReactElement => {
   const { getData } = useApi();
 
-  const { data, isLoading } = useQuery("getSetoutsQuery", () =>
+  const { data, isLoading, isError } = useQuery("getSetoutsQuery", () =>
     getData(infoType.setouts),
   );
+
+  if (isError) {
+    return (
+      <SetoutsPageStyled>
+        <div className="error-container">
+          <ErrorIcon fontSize="large" sx={{ color: "red" }} />
+          <span>
+            There was a problem fetching the data. Please try again later!
+          </span>
+        </div>
+      </SetoutsPageStyled>
+    );
+  }
 
   if (isLoading) {
     return (
