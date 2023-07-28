@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import ErrorIcon from "@mui/icons-material/Error";
 import CircularProgress from "@mui/material/CircularProgress";
 import useApi from "../../hooks/useApi/useApi";
 import { DesignsStructure, infoType } from "../../types/types";
@@ -9,14 +10,28 @@ import { leftVariants } from "../../styles/framerMotionVariants";
 const DesignsPage = (): React.ReactElement => {
   const { getData } = useApi();
 
-  const { data, isLoading } = useQuery("getDesignsQuery", () =>
+  const { data, isLoading, isError } = useQuery("getDesignsQuery", () =>
     getData(infoType.designs),
   );
 
-  const { data: users, isLoading: usersIsLoading } = useQuery(
-    "getUsersQuery",
-    () => getData(infoType.users),
-  );
+  const {
+    data: users,
+    isLoading: usersIsLoading,
+    isError: usersIsError,
+  } = useQuery("getUsersQuery", () => getData(infoType.users));
+
+  if (isError || usersIsError) {
+    return (
+      <DesignsPageStyled>
+        <div className="error-container">
+          <ErrorIcon fontSize="large" sx={{ color: "red" }} />
+          <span>
+            There was a problem fetching the data. Please try again later!
+          </span>
+        </div>
+      </DesignsPageStyled>
+    );
+  }
 
   if (isLoading || usersIsLoading) {
     return (
