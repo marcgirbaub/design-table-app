@@ -8,6 +8,7 @@ const MenuStyled = styled.div`
   gap: 30px;
   background-color: ${mainColor};
   min-height: 100vh;
+  position: fixed;
 
   @media (max-width: 1000px) {
     min-height: 20px;
@@ -15,6 +16,7 @@ const MenuStyled = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100vw;
   }
 
   .navigation {
