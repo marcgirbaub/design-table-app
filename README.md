@@ -38,7 +38,7 @@ To run the **test** suite, use the following command:
 npm test // npm run test:coverage
 ```
 
-To run e2e tests, run the following command:
+To run e2e tests, first start the server with <code>npm run rundevel</code> and then run the following command:
 
 ```
 npm run cypress
