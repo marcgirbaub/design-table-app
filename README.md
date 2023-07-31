@@ -1,5 +1,7 @@
 # **Design Table App**
 
+Design Table App is full stack web application built with **React** and **Typescript** that shows designs and setouts data in dynamic tables. It has been tested up to 90% coverage with **Jest** and **React Testing Library** as well as e2e with **Cypress**. Back-end has been developed with **json-server**.
+
 ## **Tech Stack**
 
 - **React**
